@@ -1,0 +1,99 @@
+🐼 Pandas Summary Notes
+1. Introduction to Pandas
+Python library for data manipulation and analysis.
+
+Main data structures: Series (1D) and DataFrame (2D).
+
+2. Getting Started
+Import: import pandas as pd
+
+Create Series: pd.Series([data])
+
+Create DataFrame: pd.DataFrame({column:data})
+
+3. Pandas Series
+1D labeled array (like list with index).
+
+Access elements by index or label.
+
+Attributes: .values, .index, .dtype
+
+Methods: .head(), .tail(), .describe()
+
+4. Pandas DataFrames
+2D labeled data structure (rows & columns).
+
+Access rows/columns:
+
+Columns: df["col"] or df.col
+
+Rows: .loc[label] (label-based), .iloc[position] (positional)
+
+Attributes: .shape, .columns, .dtypes
+
+Methods: .head(), .tail(), .info(), .describe()
+
+5. Reading Data
+CSV: pd.read_csv("file.csv", na_values=[...], index_col=...)
+
+JSON: pd.read_json("file.json") or pd.json_normalize() for nested JSON
+
+6. Analyzing Data
+.info() — summary info
+
+.describe() — stats summary for numeric
+
+.value_counts() — frequency count for categorical
+
+.unique() — unique values
+
+7. Cleaning Data
+7.1 Cleaning Empty Cells (NaN)
+Detect: df.isnull() / df.isnull().sum()
+
+Remove rows: df.dropna(inplace=True)
+
+Fill missing: df.fillna(value, inplace=True) or with mean/median/mode
+
+7.2 Cleaning Wrong Format
+Convert types:
+
+Dates: pd.to_datetime(df["col"], errors='coerce')
+
+Numeric: pd.to_numeric(df["col"], errors='coerce')
+
+Remove unwanted chars: df["col"].str.replace("Rs", "").str.strip()
+
+7.3 Cleaning Wrong Data
+Filter or fix illogical data:
+
+Remove invalid rows: df = df[(df["Age"] >= 0) & (df["Age"] <= 100)]
+
+Replace outliers or caps: df.loc[df["Marks"] > 100, "Marks"] = 100
+
+7.4 Removing Duplicates
+Detect: df.duplicated()
+
+Remove: df.drop_duplicates(inplace=True) or on subset
+
+8. Correlations
+df.corr() → correlation matrix of numeric columns
+
+.corr(other_col) → correlation between two columns
+
+Correlation values:
+
++1 = perfect positive
+
+0 = no correlation
+
+-1 = perfect negative
+
+9. Pandas Plotting
+Use .plot() on Series or DataFrame
+
+Common kinds:
+
+Line (df.plot()), Bar (kind='bar'), Histogram (kind='hist'), Scatter (kind='scatter'), Box (kind='box')
+
+Requires matplotlib.pyplot for plt.show() to display plots

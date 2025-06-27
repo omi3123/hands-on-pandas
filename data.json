@@ -1,0 +1,16 @@
+[
+  {
+    "ID": 1,
+    "Student": {
+      "Name": "Ali",
+      "Details": {"Age": 20, "City": "Lahore"}
+    }
+  },
+  {
+    "ID": 2,
+    "Student": {
+      "Name": "Zara",
+      "Details": {"Age": 21, "City": "Islamabad"}
+    }
+  }
+]
